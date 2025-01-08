@@ -1,0 +1,17 @@
+services:
+  php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    volumes:
+      - .:/var/www/html
+    networks:
+      - bridge-network
+    extra_hosts:
+      host.docker.internal: host-gateway
+    tty: true
+    container_name: php-skeleton
+
+networks:
+  bridge-network:
+    driver: bridge
